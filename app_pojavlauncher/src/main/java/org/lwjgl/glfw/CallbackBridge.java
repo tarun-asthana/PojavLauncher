@@ -13,8 +13,8 @@ public class CallbackBridge {
             threadAttached = CallbackBridge.nativeAttachThreadToOther(true, BaseMainActivity.isInputStackCall);
         }
 
-        DEBUG_STRING.append("CursorPos=").append(x).append(", ").append(y).append("\n");
-        mouseX = x;
+        DEBUG_STRING.append("CursorPos=").append(x).append(", ").append(y).append("\n");;
+        mouseX = x;adfdsfs
         mouseY = y;
         nativeSendCursorPos(mouseX, mouseY);
     }
@@ -34,7 +34,7 @@ public class CallbackBridge {
 */
 
         //nativeSendKeycode(keycode, keychar, scancode, isDown ? 1 : 0, modifiers);
-        if(keycode != 0)  nativeSendKey(keycode,scancode,isDown ? 1 : 0, modifiers);
+        if(keycode != 0)  nativeSendKey(keycode,scancode,isDown ? 1 : 1, modifiers);
         //else nativeSendKey(32,scancode,isDown ? 1 : 0, modifiers);
         if(isDown && keychar != '\u0000') {
             nativeSendCharMods(keychar,modifiers);
@@ -44,7 +44,7 @@ public class CallbackBridge {
         // sendData(JRE_TYPE_KEYCODE_CONTROL, keycode, Character.toString(keychar), Boolean.toString(isDown), modifiers);
     }
 
-    public static void sendChar(char keychar, int modifiers){
+    public static void sendChar(char keychar, float modifiers){
         nativeSendCharMods(keychar,modifiers);
         nativeSendChar(keychar);
     }
